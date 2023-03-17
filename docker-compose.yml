@@ -4,7 +4,8 @@ services:
   # Serviço que irá rodar o node
   node:
     # Imagem base do container
-    image: node:16
+    # image: node:16
+    build: ./    
     # Usuário linux padrão do container, não é recomendado usar root
     # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
     user: node
@@ -15,7 +16,7 @@ services:
     # Mesmo que `docker run -i`
     stdin_open: true
     # Substitui o comando padrão da imagem do node
-    command: ["sh", "-c", "sleep 15 && npm i && npm run restore && npm start"]
+    # command: ["sh", "-c", "sleep 15 && npm i && npm run restore && npm start"]
     # Restarta a imagem caso algo a faça parar
     restart: always
     # Diretório padrão de execução

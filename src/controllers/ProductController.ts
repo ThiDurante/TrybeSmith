@@ -23,6 +23,23 @@ class ProductsController {
     const result = await this.productsService.getAll();
     return res.status(200).json(result);
   };
+
+  public remove = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    await this.productsService.remove(Number(id));
+    return res.status(204).json({ message: `Product ${id} deleted from Database` });
+  };
+
+  public update = async (req: Request, res: Response) => {
+    const updatedProduct = req.body;
+    const { id } = req.params;
+    const updated = await this.productsService.update(updatedProduct, Number(id));
+    if (typeof updated === 'string') {
+      const status = setStatus(updated);
+      return res.status(status).json({ message: updated });
+    }
+    return res.status(202).json(updated);
+  };
 }
 
 export default ProductsController;

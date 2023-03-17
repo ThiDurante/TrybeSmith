@@ -24,6 +24,24 @@ class ProductsModel {
     const [products] = await this.connection.execute<IProduct[] & RowDataPacket[]>(query);
     return products;
   }
+
+  public async getById(id:number): Promise<IProduct[]> {
+    const query = 'SELECT * from Trybesmith.products WHERE id = ?';
+    const [product] = await this.connection.execute<IProduct[] & RowDataPacket[]>(query, [id]);
+    return product;
+  }
+
+  public async remove(id:number): Promise<void> {
+    const query = 'DELETE from Trybesmith.products WHERE id = ?';
+    await this.connection.execute(query, [id]);
+  }
+
+  public async update(product: IProduct, id: number): Promise<IProduct> {
+    const query = 'UPDATE Trybesmith.products SET name = ?, amount = ? WHERE id = ?';
+    await this.connection
+      .execute(query, [product.name, product.amount, id]);
+    return product;
+  }
 }
 
 export default ProductsModel;
