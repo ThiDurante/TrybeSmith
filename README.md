@@ -16,15 +16,8 @@ git clone https://github.com/ThiDurante/trybesmith.git
 # Now let's get into the folder
 cd trybesmith
 # It's all about docker compose
-docker-compose up -d
-# Let's get inside the docker container terminal
-docker exec -it trybesmith bash
-# Install everything we need to make it work
-npm install
-# Populate the DB
-npm run restore
-# Run the app!
-npm start
+docker-compose up
+# Just wait for the dependencies to be installed (around 20 seconds)
 ```
 
 And the App will be working on port 3001 of the localhost!
@@ -33,7 +26,7 @@ From here you can use postman to shoot requests :)
 
 ## Screenshots
 
-I user a pattern for commits that makes them easily readable and faster to understand changes that were made!
+I user a pattern for commits that makes them easily readable and faster to understand changes that were made! [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 These are the commits I made while developing the project:
 
