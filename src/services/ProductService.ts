@@ -34,8 +34,12 @@ class ProductsService {
   public async update(product: IProduct, id: number): Promise<string | IProduct> {
     const { error } = productSchema.validate(product);
     if (error) return error.details[0].message;
+    
     const productExists = await this.productsModel.getById(id);
-    if (!productExists) return 'This product does not exist';
+    if (productExists.length < 1) {
+      return 'This product does not exist';
+    } 
+      
     const updated = this.productsModel.update(product, id);
     return updated;
   }
