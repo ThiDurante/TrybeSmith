@@ -44,6 +44,27 @@ class UserController {
     }
     return res.status(401).json({ message: 'Username or password invalid' });
   };
+
+  public remove = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    await this.userService.remove(Number(id));
+    return res.status(204).json({ message: `Product ${id} deleted from Database` });
+  };
+
+  public update = async (req: Request, res: Response) => {
+    const updatedUser = req.body;
+    delete updatedUser.iat;
+    delete updatedUser.exp;
+    console.log(updatedUser);
+    
+    const { id } = req.params;
+    const updated = await this.userService.update(updatedUser, Number(id));
+    if (typeof updated === 'string') {
+      const status = setStatus(updated);
+      return res.status(status).json({ message: updated });
+    }
+    return res.status(202).json(updated);
+  };
 }
 
 export default UserController;

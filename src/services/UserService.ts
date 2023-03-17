@@ -20,6 +20,10 @@ class UserService {
   public async create(user: IUser): Promise<string | IUser> {
     const { error } = userSchema.validate(user);
     if (error) return error.details[0].message;
+
+    const userNameExists = await this.userModel.getByUsername(user.username);
+    if (userNameExists) return 'This username is already taken';
+
     const createdUser = await this.userModel.create(user);
     return createdUser;
   }
@@ -32,6 +36,23 @@ class UserService {
   public async getByUsername(username: string): Promise<IUser> {
     const user = await this.userModel.getByUsername(username);
     return user;
+  }
+
+  public async remove(id:number): Promise<void> {
+    await this.userModel.remove(id);
+  }
+
+  public async update(user: IUser, id: number): Promise<string | IUser> {
+    const { error } = userSchema.validate(user);
+    if (error) return error.details[0].message;
+    
+    const userExists = await this.userModel.getById(id);
+    if (userExists.length < 1) {
+      return 'This user does not exist';
+    }
+      
+    const updated = this.userModel.update(user, id);
+    return updated;
   }
 }
 

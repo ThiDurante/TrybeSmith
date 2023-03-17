@@ -32,6 +32,26 @@ class UserModel {
       .execute<IUser[] & RowDataPacket[]>(query, [username]);
     return result;
   }
+
+  public async getById(id:number): Promise<IUser[]> {
+    const query = 'SELECT * from Trybesmith.users WHERE id = ?';
+    const [user] = await this.connection.execute<IUser[] & RowDataPacket[]>(query, [id]);
+    return user;
+  }
+
+  public async remove(id:number): Promise<void> {
+    const query = 'DELETE from Trybesmith.users WHERE id = ?';
+    await this.connection.execute(query, [id]);
+  }
+
+  public async update(user: IUser, id: number): Promise<IUser> {
+    const query = `UPDATE Trybesmith.users 
+    SET username = ?, vocation = ?, level = ?, password = ? 
+    WHERE id = ?`;
+    await this.connection
+      .execute(query, [user.username, user.vocation, user.level, user.password, id]);
+    return user;
+  }
 }
 
 export default UserModel;
