@@ -2,7 +2,7 @@
 
 An app to control orders on a smith (who would say a medieval smith would have an app?)
 
-Here we have a login function with JWT authentication, where you can insert and check orders made by users(clients). The technologies used are listed below
+Here we have login with JWT authentication, where you can CRUD orders made by users(clients), users and products. The technologies used are listed below
 
 ## Installation and use
 
