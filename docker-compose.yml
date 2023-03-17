@@ -15,7 +15,7 @@ services:
     # Mesmo que `docker run -i`
     stdin_open: true
     # Substitui o comando padrão da imagem do node
-    command: bash
+    command: ["sh", "-c", "sleep 15 && npm i && npm run restore && npm start"]
     # Restarta a imagem caso algo a faça parar
     restart: always
     # Diretório padrão de execução
