@@ -4,6 +4,8 @@ An app to control orders on a smith (who would say a medieval smith would have a
 
 Here we have login with JWT authentication, where you can CRUD orders made by users(clients), users and products. The technologies used are listed below
 
+Im also preparing the documentation with swagger, will update ASAP
+
 ## Installation and use
 
 This is quite a simple one!
