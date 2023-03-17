@@ -7,8 +7,8 @@ Here we have a login function with JWT authentication, where you can insert and 
 ## Installation and use
 
 This is quite a simple one!
-All you need is node 16 || 18
-You can do:
+All you need is docker installed
+Then do the following steps:
 
 ```bash
 # First clone the repo
@@ -26,7 +26,9 @@ From here you can use postman to shoot requests :)
 
 ## Screenshots
 
-I user a pattern for commits that makes them easily readable and faster to understand changes that were made! [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+I user a pattern for commits that makes them easily readable and faster to understand changes that were made! 
+
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 These are the commits I made while developing the project:
 
@@ -47,7 +49,7 @@ These are the commits I made while developing the project:
 
 ## Stacks
 
-**Back-end:** Node, Express, MySQL, TypeScript, JWT, Joi
+**Back-end:** Node, Express, MySQL, TypeScript, JWT, Joi, a little bit of OOP
 
 ## 🚀 About me
 
